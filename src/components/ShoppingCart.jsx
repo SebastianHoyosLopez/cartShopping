@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { loadProduct } from "../redux/actions";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadCart } from '../redux/actions';
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
-  const array = useSelector((store) => store.add_to_cart.array);
-  const activeProduct = useSelector((store) => store.add_to_cart.active);
-  
+  const cart = useSelector((store) => store.cart);
+
   useEffect(() => {
-    dispatch(loadProduct());
+    dispatch(loadCart());
   }, [dispatch]);
 
   return (
@@ -16,8 +15,7 @@ const ShoppingCart = () => {
       <div className="text-center">
         <h2 className="mt-3">Products in Cart</h2>
         <div className="row">
-          {activeProduct &&
-            array.map((product) => (
+          {cart.map((product) => (
               <div key={product.id} className="col-md-3 my-3 text-center">
                 <div className="card">
                   <img src={product.image} className="card-img-top" alt="" />
