@@ -1,10 +1,11 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'rc-pagination/assets/index.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './App';
+import './index.css';
+import store from './redux/store';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -12,5 +13,5 @@ ReactDOM.render(
       <App />
     </React.StrictMode>
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
