@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Products from "./components/Products";
 import ShoppingCart from "./components/ShoppingCart";
-
-import { loadProduct } from "./redux/actions";
+import { loadCart } from "./redux/actions";
+import { useDispatch } from "react-redux";
 
 const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    dispatch(loadProduct());
+    dispatch(loadCart());
   }, [dispatch]);
 
   return (
