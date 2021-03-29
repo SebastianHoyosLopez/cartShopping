@@ -13,8 +13,9 @@ const cart = (state = initialState, action) => {
         localStorage.setItem("cart", JSON.stringify(cart));
       } else {
         localStorage.setItem("cart", JSON.stringify([action.payload]));
+        cart = [action.payload]
       }
-      return [...state];
+      return [...cart];
     case ActionTypes.LOAD_CART:
       cart = localStorage.getItem("cart");
       if (cart) {
@@ -28,8 +29,7 @@ const cart = (state = initialState, action) => {
         cart = JSON.parse(cart);
         cart = cart.filter((item) => item.id !== action.payload);
         localStorage.setItem("cart", JSON.stringify(cart));
-      } else {
-        localStorage.setItem("cart", JSON.stringify([action.payload]));
+        return [...cart]
       }
       return [...state];
     default:
