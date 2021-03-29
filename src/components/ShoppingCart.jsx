@@ -1,14 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCart, productDelete } from "../redux/actions";
+import { productDelete } from "../redux/actions";
 
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((store) => store.cart);
-
-  useEffect(() => {
-    dispatch(loadCart());
-  }, [dispatch]);
 
   return (
     <div className="container">

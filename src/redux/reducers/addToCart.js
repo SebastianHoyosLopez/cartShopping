@@ -13,7 +13,7 @@ const cart = (state = initialState, action) => {
         localStorage.setItem("cart", JSON.stringify(cart));
       } else {
         localStorage.setItem("cart", JSON.stringify([action.payload]));
-        cart = [action.payload]
+        cart = [action.payload];
       }
       return [...cart];
     case ActionTypes.LOAD_CART:
@@ -29,7 +29,7 @@ const cart = (state = initialState, action) => {
         cart = JSON.parse(cart);
         cart = cart.filter((item) => item.id !== action.payload);
         localStorage.setItem("cart", JSON.stringify(cart));
-        return [...cart]
+        return [...cart];
       }
       return [...state];
     default:

@@ -5,7 +5,6 @@ import "./style/navbar.css";
 
 const Navbar = () => {
   const quantity = useSelector((store) => store.cart.length);
-  console.log(quantity);
 
   return (
     <div className="navbar navbar-dark bg-dark sticky-top">
