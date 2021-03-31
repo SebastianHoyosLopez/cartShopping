@@ -20,6 +20,7 @@ const ShoppingCart = () => {
                   <h5 className="card-title">{product.name}</h5>
                   <p>Price: {product.price}</p>
                 </div>
+                <p>cantidad: </p>
                 <button
                   onClick={() => dispatch(productDelete(product.id))}
                   className="btn btn-warning m-3"

@@ -62,7 +62,7 @@ const Products = () => {
                 <h5 className="card-title">{product.name}</h5>
                 <p>Price: {product.price}</p>
                 <button
-                  onClick={() => dispatch(addToCart(product))}
+                  onClick={() => dispatch(addToCart(product, 10))}
                   className="btn btn-warning btn-sm"
                 >
                   ADD TO CART

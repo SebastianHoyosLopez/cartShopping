@@ -9,7 +9,8 @@ const cart = (state = initialState, action) => {
       cart = localStorage.getItem("cart");
       if (cart) {
         cart = JSON.parse(cart);
-        cart = [...cart, action.payload];
+        const product = action.payload;
+        cart = [...cart, product];
         localStorage.setItem("cart", JSON.stringify(cart));
       } else {
         localStorage.setItem("cart", JSON.stringify([action.payload]));
