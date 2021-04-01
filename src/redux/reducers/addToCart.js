@@ -1,4 +1,4 @@
-import * as ActionTypes from "../action-types";
+import * as ActionTypes from '../action-types';
 
 const initialState = [];
 
@@ -6,30 +6,41 @@ const cart = (state = initialState, action) => {
   let cart;
   switch (action.type) {
     case ActionTypes.ADD_TO_CART:
-      cart = localStorage.getItem("cart");
+      cart = localStorage.getItem('cart');
       if (cart) {
         cart = JSON.parse(cart);
-        const product = action.payload;
-        cart = [...cart, product];
-        localStorage.setItem("cart", JSON.stringify(cart));
+
+        const found = cart.find((product) => product.id == action.payload.id);
+
+        if (found) {
+          cart = cart.map((product) => {
+            if (product.id == action.payload.id) {
+              return { ...product, quantity: product.quantity + 1 };
+            } else {
+              return product;
+            }
+          });
+        } else {
+          cart = [...cart, { ...action.payload, quantity: 1 }];
+        }
       } else {
-        localStorage.setItem("cart", JSON.stringify([action.payload]));
-        cart = [action.payload];
+        cart = [{ ...action.payload, quantity: 1 }];
       }
+      localStorage.setItem('cart', JSON.stringify(cart));
       return [...cart];
     case ActionTypes.LOAD_CART:
-      cart = localStorage.getItem("cart");
+      cart = localStorage.getItem('cart');
       if (cart) {
         cart = JSON.parse(cart);
         return [...cart];
       }
       return [...state];
     case ActionTypes.PRODUCT_DELETE:
-      cart = localStorage.getItem("cart");
+      cart = localStorage.getItem('cart');
       if (cart) {
         cart = JSON.parse(cart);
         cart = cart.filter((item) => item.id !== action.payload);
-        localStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem('cart', JSON.stringify(cart));
         return [...cart];
       }
       return [...state];
