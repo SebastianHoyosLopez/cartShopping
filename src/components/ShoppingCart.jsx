@@ -20,9 +20,9 @@ const ShoppingCart = () => {
                   <h5 className="card-title">{product.name}</h5>
                   <p>Price: {product.price}</p>
                 </div>
-                <p>cantidad: </p>
+                <p>cantidad: {product.quantity}</p>
                 <button
-                  onClick={() => dispatch(productDelete(product.id))}
+                  onClick={() => dispatch(productDelete(product))}
                   className="btn btn-warning m-3"
                 >
                   delete

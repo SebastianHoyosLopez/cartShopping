@@ -9,13 +9,22 @@ const cart = (state = initialState, action) => {
       cart = localStorage.getItem("cart");
       if (cart) {
         cart = JSON.parse(cart);
-        const product = action.payload;
-        cart = [...cart, product];
-        localStorage.setItem("cart", JSON.stringify(cart));
+        const found = cart.find((product) => product.id === action.payload.id);
+        if (found) {
+          cart = cart.map((product) => {
+            if (product.id === action.payload.id) {
+              return { ...product, quantity: product.quantity + 1};
+            } else {
+              return product;
+            }
+          });
+        } else {
+          cart = [...cart, { ...action.payload, quantity: 1 }];
+        }
       } else {
-        localStorage.setItem("cart", JSON.stringify([action.payload]));
-        cart = [action.payload];
+        cart = [{ ...action.payload, quantity: 1 }];
       }
+      localStorage.setItem("cart", JSON.stringify(cart));
       return [...cart];
     case ActionTypes.LOAD_CART:
       cart = localStorage.getItem("cart");
@@ -28,11 +37,19 @@ const cart = (state = initialState, action) => {
       cart = localStorage.getItem("cart");
       if (cart) {
         cart = JSON.parse(cart);
-        cart = cart.filter((item) => item.id !== action.payload);
-        localStorage.setItem("cart", JSON.stringify(cart));
-        return [...cart];
+        cart = cart.map((product) => {
+          if (product.id === action.payload.id && product.quantity > 1) {
+            return { ...product, quantity: product.quantity - 1 };
+          } else {
+            return product;
+          }
+        });
       }
-      return [...state];
+      if(action.payload.quantity === 1){
+        cart = cart.filter((item) => item.id !== action.payload.id);
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      return [...cart];
     default:
       return [...state];
   }
