@@ -23,7 +23,7 @@ const cart = (state = initialState, action) => {
             }
           });
         } else {
-          cart = [...cart, { ...action.payload, quantity: 1 }];
+          cart = [...cart, { ...action.payload, quantity: 1, total: action.payload.price }];
         }
       } else {
         cart = [
