@@ -13,7 +13,11 @@ const cart = (state = initialState, action) => {
         if (found) {
           cart = cart.map((product) => {
             if (product.id === action.payload.id) {
-              return { ...product, quantity: product.quantity + 1};
+              return {
+                ...product,
+                quantity: product.quantity + 1,
+                total: parseInt(product.total) + parseInt(action.payload.price),
+              };
             } else {
               return product;
             }
@@ -22,7 +26,9 @@ const cart = (state = initialState, action) => {
           cart = [...cart, { ...action.payload, quantity: 1 }];
         }
       } else {
-        cart = [{ ...action.payload, quantity: 1 }];
+        cart = [
+          { ...action.payload, quantity: 1, total: action.payload.price },
+        ];
       }
       localStorage.setItem("cart", JSON.stringify(cart));
       return [...cart];
@@ -39,13 +45,17 @@ const cart = (state = initialState, action) => {
         cart = JSON.parse(cart);
         cart = cart.map((product) => {
           if (product.id === action.payload.id && product.quantity > 1) {
-            return { ...product, quantity: product.quantity - 1 };
+            return {
+              ...product,
+              quantity: product.quantity - 1,
+              total: parseInt(product.total) - parseInt(product.price),
+            };
           } else {
             return product;
           }
         });
       }
-      if(action.payload.quantity === 1){
+      if (action.payload.quantity === 1) {
         cart = cart.filter((item) => item.id !== action.payload.id);
       }
       localStorage.setItem("cart", JSON.stringify(cart));
