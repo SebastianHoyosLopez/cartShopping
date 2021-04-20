@@ -30,7 +30,7 @@ const App = () => {
       }
       setChecking(false);
     });
-  }, [dispatch, checking, isLoggedIn]);
+  }, [dispatch, checking, isLoggedIn,]);
   
   const active = useSelector((store) => store.user.activo);
 

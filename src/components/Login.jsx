@@ -1,12 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { startGoogleAuth } from "../redux/actions";
+import { withRouter } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
-const Login = () => {
+const Login = (props) => {
   const dispatch = useDispatch();
+  const activo = useSelector(store => store.user.activo)
+  
   const handleGoogleAuth = () => {
     dispatch(startGoogleAuth())
   }
+
+  useEffect(() => {
+    if (activo) {
+      props.history.push("/products");
+    } 
+  }, [activo, props]);
 
   return (
     <div className="text-center">
@@ -21,4 +31,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

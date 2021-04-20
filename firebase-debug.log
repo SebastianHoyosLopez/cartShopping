@@ -1,0 +1,29 @@
+[debug] [2021-04-20T01:40:28.386Z] ----------------------------------------------------------------------
+[debug] [2021-04-20T01:40:28.389Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Usuario\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-04-20T01:40:28.390Z] CLI Version:   9.10.0
+[debug] [2021-04-20T01:40:28.390Z] Platform:      win32
+[debug] [2021-04-20T01:40:28.390Z] Node Version:  v13.14.0
+[debug] [2021-04-20T01:40:28.391Z] Time:          Mon Apr 19 2021 20:40:28 GMT-0500 (hora estándar de Colombia)
+[debug] [2021-04-20T01:40:28.392Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-20T01:40:28.403Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-20T01:40:28.403Z] > authorizing via signed-in user (tatansebastan@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Usuario\Desktop\programacion\curso React\Redux\shopping_cart
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
