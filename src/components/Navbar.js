@@ -30,7 +30,7 @@ const Navbar = () => {
           <>
             <button onClick={handleLogout} className="btn btn-dark">Cerrar Sesión</button>
             <NavLink className="btn btn-dark mr-2" to="/" exact>
-              Inicio
+              Perfil
             </NavLink>
             <NavLink className="btn btn-dark mr-2" to="/products" exact>
               Products

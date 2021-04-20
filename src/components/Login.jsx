@@ -15,7 +15,9 @@ const Login = (props) => {
   useEffect(() => {
     if (activo) {
       props.history.push("/products");
-    } 
+    }else{
+      props.history.push('/login')
+    }
   }, [activo, props]);
 
   return (
