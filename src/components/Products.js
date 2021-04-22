@@ -13,16 +13,20 @@ const Products = () => {
   const cart = useSelector((store) => store.cart);
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await axios.get(
-        `https://dev2.th3insid3.com/api/products?page=${currentPage}&search=${nameProduct}`
-      );
-      const products = res.data.products;
-      setProducts(products);
-      setPaginatorInfo(res.data.paginatorInfo);
+    let mounted = true;
+    if (mounted) {
+      const fetchData = async () => {
+        const res = await axios.get(
+          `https://dev2.th3insid3.com/api/products?page=${currentPage}&search=${nameProduct}`
+        );
+        const products = res.data.products;
+        setProducts(products);
+        setPaginatorInfo(res.data.paginatorInfo);
+      };
+      fetchData();
     }
-    fetchData();
-  }, [currentPage, nameProduct, cart]);
+    return () => mounted = false;
+  }, [currentPage, nameProduct]);
 
   const dispatch = useDispatch();
 

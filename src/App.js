@@ -12,6 +12,7 @@ import { loadCart, loadUser, login } from "./redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Login from "./components/Login";
 import { firebase } from "./firebase";
+import Profile from "./components/Profile";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -47,9 +48,11 @@ const App = () => {
       <div>
         <Navbar />
         <Switch>
-          <Route component={Login} path="/login" />
-          <PrivateRoute component={Products} path="/products" />
-          <PrivateRoute component={ShoppingCart} path="/cart" />
+          <Route component={Login} path="/login" exact/>
+          <Route component={Login} path="/cartShopping" exact/>
+          <PrivateRoute component={Profile} path="/" exact/>
+          <PrivateRoute component={Products} path="/products" exact/>
+          <PrivateRoute component={ShoppingCart} path="/cart" exact/>
         </Switch>
       </div>
     </Router>

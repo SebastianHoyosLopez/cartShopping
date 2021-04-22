@@ -18,7 +18,7 @@ const Login = (props) => {
     }else{
       props.history.push('/login')
     }
-  }, [activo, props]);
+  }, [activo, props.history]);
 
   return (
     <div className="text-center">
