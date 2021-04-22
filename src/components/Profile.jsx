@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
   return (
     <div className="text-center my-5">
       <h1>{user.userData.userName}</h1>

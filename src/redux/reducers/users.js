@@ -8,12 +8,6 @@ const initialData = {
 const user = (state = initialData, action) => {
   let userData;
   switch (action.type) {
-    case ActionTypes.LOAD_USER:
-      if (userData) {
-        userData = JSON.parse(userData);
-        return { ...userData };
-      }
-      return { ...userData };
     case ActionTypes.USER_SUCCESS:
       userData = {
         ...state,

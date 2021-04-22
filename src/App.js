@@ -8,7 +8,7 @@ import {
 import Navbar from "./components/Navbar";
 import Products from "./components/Products";
 import ShoppingCart from "./components/ShoppingCart";
-import { loadCart, loadUser, login } from "./redux/actions";
+import { loadCart, login } from "./redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Login from "./components/Login";
 import { firebase } from "./firebase";
@@ -21,7 +21,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(loadCart());
-    dispatch(loadUser());
     firebase.auth().onAuthStateChanged((user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName, user.photoURL, user.email));

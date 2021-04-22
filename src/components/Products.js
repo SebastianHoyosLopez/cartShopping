@@ -25,7 +25,7 @@ const Products = () => {
       };
       fetchData();
     }
-    return () => mounted = false;
+    mounted = false;
   }, [currentPage, nameProduct]);
 
   const dispatch = useDispatch();
