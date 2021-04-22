@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
-  Redirect,
   Route,
   Switch,
 } from "react-router-dom";
@@ -13,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Login from "./components/Login";
 import { firebase } from "./firebase";
 import Profile from "./components/Profile";
+import PrivateRoute from "./components/PrivateRoute";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -34,14 +34,6 @@ const App = () => {
   
   const active = useSelector((store) => store.user.activo);
 
-  const PrivateRoute = ({ component, path, ...rest }) => {
-    if (active) {
-      return <Route component={component} path={path} {...rest} />;
-    } else {
-      return <Redirect to="/login" {...rest} />;
-    }
-  };
-
   return isLoggedIn !== false ? (
     <Router>
       <div>
@@ -49,9 +41,9 @@ const App = () => {
         <Switch>
           <Route component={Login} path="/login" exact/>
           <Route component={Login} path="/cartShopping" exact/>
-          <PrivateRoute component={Profile} path="/" exact/>
-          <PrivateRoute component={Products} path="/products" exact/>
-          <PrivateRoute component={ShoppingCart} path="/cart" exact/>
+          <PrivateRoute component={Profile} path="/" active={active} exact/>
+          <PrivateRoute component={Products} path="/products" active={active} exact/>
+          <PrivateRoute component={ShoppingCart} path="/cart" active={active} exact/>
         </Switch>
       </div>
     </Router>
