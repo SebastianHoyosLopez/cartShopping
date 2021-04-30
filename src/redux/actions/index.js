@@ -19,7 +19,7 @@ export const productDelete = (payload) => ({
 //USERS
 
 export const login = (uid, displayName, photoURL, email) => ({
-  type: ActionTypes.USER_SUCCESS,
+  type: ActionTypes.LOGIN,
   payload: {uid, displayName, photoURL, email },
 });
 

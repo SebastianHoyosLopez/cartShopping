@@ -8,7 +8,7 @@ const initialData = {
 const user = (state = initialData, action) => {
   let userData;
   switch (action.type) {
-    case ActionTypes.USER_SUCCESS:
+    case ActionTypes.LOGIN:
       userData = {
         ...state,
         activo: true,

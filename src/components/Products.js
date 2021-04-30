@@ -56,18 +56,24 @@ const Products = () => {
       <div className="row">
         {products.map((product) => (
           <div key={product.id} className="col-md-4 my-5">
-            <div className="card" style={{ height: "380px" }}>
+            <div className="card" style={{ height: "480px" }}>
               <img
-                className="card-img-top"
+                className="card-img-top mb-2"
                 src={product.image}
                 alt={product.name}
+                style={{
+                  height: "300px",
+                  objectFit: "scale-down",
+                }}
               />
-              <div className="card-body">
+              <div className="card-body mb-3">
                 <h5 className="card-title">{product.name}</h5>
                 <p>Price: {product.price}</p>
+              </div>
+              <div>
                 <button
                   onClick={() => dispatch(addToCart(product))}
-                  className="btn btn-warning btn-sm"
+                  className="btn btn-warning btn-sm m-3"
                 >
                   ADD TO CART
                 </button>
